@@ -8,8 +8,13 @@ function About() {
         <h2 className="section-title">About Me<span>.</span></h2>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 48 }} className="grid-2">
           <div>
-            <p className="dim" style={{ lineHeight: 1.8, marginBottom: 16 }}>
-              Hello! I'm Shakir Ullah, a passionate MERN Stack Developer based in Peshawar, Pakistan. I enjoy creating things that live on the internet — from websites to full-stack web applications.
+            <p className="dim" style={{ lineHeight: 1.8, marginBottom: 16 }}>I am Shakir Ullah, a Computer Science graduate from Peshawar, Pakistan, and a passionate MERN Stack Developer.
+
+I specialize in building full-stack web applications using MongoDB, Express, React, and Node.js. I also work with modern frontend tools like Tailwind CSS, JavaScript, and TypeScript to create responsive and user-friendly interfaces.
+
+I have experience working on real-world projects, including frontend and backend development, REST APIs, and database management. I also use Git and GitHub for version control and collaboration.
+
+My goal is to become a professional full-stack developer and contribute to impactful real-world software solutions while continuously improving my skills.
             </p>
             <p className="dim" style={{ lineHeight: 1.8 }}>
               My goal is to build products that are not only functional but also provide pixel-perfect, performant experiences. I'm always learning new technologies and best practices.
