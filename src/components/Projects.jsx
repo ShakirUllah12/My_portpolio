@@ -1,27 +1,214 @@
-import React from "react";
+import React, { useState } from "react";
 
 const projects = [
-  { title: "E-Commerce Platform", desc: "Full-stack MERN e-commerce app with Stripe payments, JWT auth, and admin dashboard.", tech: ["React", "Node.js", "MongoDB", "Stripe"] },
-  { title: "Task Management App", desc: "Collaborative project management tool with drag-and-drop and real-time updates.", tech: ["React", "Express", "MongoDB", "Socket.io"] },
-  { title: "Social Media Dashboard", desc: "Analytics dashboard with data visualization and multi-platform integration.", tech: ["React", "Node.js", "MongoDB", "Chart.js"] },
-  { title: "Real-Time Chat App", desc: "Messaging app with file sharing, group chats, and video calling.", tech: ["React", "Express", "MongoDB", "WebRTC"] },
+  { 
+    title: "AI Learning Assistant (PDF-Based)", 
+    desc: "A Final Year Project that lets users upload PDFs and interact with an AI to learn from their content, generate summaries, and ask questions.", 
+    tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "OpenAI"],
+    category: "fullstack",
+    link: "https://ai-learning-frontend-navy.vercel.app/login",
+    github: "https://github.com/ShakirUllah12",
+    image: "/ai_learning_assistant.png"
+  },
+  { 
+    title: "E-Commerce Platform", 
+    desc: "Full-stack MERN e-commerce app with Stripe payments, JWT auth, and admin dashboard.", 
+    tech: ["React", "Node.js", "MongoDB", "Stripe"],
+    category: "fullstack",
+    link: "#",
+    github: "https://github.com/ShakirUllah12"
+  },
+  { 
+    title: "MERN E-Commerce API", 
+    desc: "A robust backend RESTful API containing secure JWT user authentication, product management, and order checkout flows.", 
+    tech: ["Node.js", "Express.js", "MongoDB", "JWT"],
+    category: "backend",
+    link: "#",
+    github: "https://github.com/ShakirUllah12/mern-ecommerce"
+  },
+  { 
+    title: "Blog API", 
+    desc: "RESTful API built with Express supporting complete CRUD operations, category filters, and user registration for dynamic blogs.", 
+    tech: ["Node.js", "Express.js", "MongoDB", "Mongoose"],
+    category: "backend",
+    link: "#",
+    github: "https://github.com/ShakirUllah12/blog-api"
+  },
+  { 
+    title: "Task Management App", 
+    desc: "Collaborative project management tool with drag-and-drop and real-time updates.", 
+    tech: ["React", "Express", "MongoDB", "Socket.io"],
+    category: "fullstack",
+    link: "#",
+    github: "https://github.com/ShakirUllah12"
+  },
+  { 
+    title: "Social Media Dashboard", 
+    desc: "Analytics dashboard with data visualization and multi-platform integration.", 
+    tech: ["React", "Node.js", "MongoDB", "Chart.js"],
+    category: "frontend",
+    link: "#",
+    github: "https://github.com/ShakirUllah12"
+  },
+  { 
+    title: "Real-Time Chat App", 
+    desc: "Messaging app with file sharing, group chats, and video calling.", 
+    tech: ["React", "Express", "MongoDB", "WebRTC"],
+    category: "fullstack",
+    link: "#",
+    github: "https://github.com/ShakirUllah12"
+  }
 ];
 
 function Projects() {
+  const [filter, setFilter] = useState("all");
+
+  const filteredProjects = filter === "all" 
+    ? projects 
+    : projects.filter(p => p.category === filter);
+
   return (
-    <section id="projects" className="section">
+    <section id="projects" className="section" style={{ position: "relative" }}>
       <div className="container">
         <p className="section-label">{"// Projects"}</p>
         <h2 className="section-title">Things I've Built<span>.</span></h2>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 24 }} className="grid-2">
-          {projects.map(p => (
-            <div key={p.title} className="card">
-              <h3 className="bright" style={{ fontSize: 18, fontWeight: 600, marginBottom: 8 }}>{p.title}</h3>
-              <p className="dim" style={{ fontSize: 14, lineHeight: 1.7, marginBottom: 16 }}>{p.desc}</p>
-              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+
+        {/* Category Filter Tabs */}
+        <div 
+          style={{ 
+            display: "flex", 
+            gap: 12, 
+            marginBottom: 40, 
+            flexWrap: "wrap",
+            borderBottom: "1px solid var(--bg-card-border)",
+            paddingBottom: 16
+          }}
+        >
+          {["all", "fullstack", "backend", "frontend"].map(cat => (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className="mono"
+              style={{
+                padding: "8px 16px",
+                fontSize: 13,
+                borderRadius: 20,
+                border: "none",
+                cursor: "pointer",
+                backgroundColor: filter === cat ? "var(--primary)" : "var(--bg-secondary)",
+                color: filter === cat ? "var(--bg-primary)" : "var(--text-secondary)",
+                fontWeight: filter === cat ? "600" : "500",
+                transition: "all 0.2s ease"
+              }}
+            >
+              {cat === "all" ? "show_all()" : `${cat}`}
+            </button>
+          ))}
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid-2">
+          {filteredProjects.map(p => (
+            <div key={p.title} className="card" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+              {/* Project Preview */}
+              {p.image ? (
+                <div 
+                  style={{ 
+                    height: 200, 
+                    overflow: "hidden", 
+                    borderRadius: 8, 
+                    marginBottom: 20, 
+                    border: "1px solid var(--bg-card-border)",
+                    backgroundColor: "#000"
+                  }}
+                >
+                  <img 
+                    src={p.image} 
+                    alt={p.title} 
+                    style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+                  />
+                </div>
+              ) : (
+                /* Sleek default mockup representation with colorful gradient */
+                <div 
+                  style={{ 
+                    height: 120, 
+                    borderRadius: 8, 
+                    marginBottom: 20, 
+                    background: p.category === "backend" 
+                      ? "linear-gradient(135deg, var(--bg-secondary) 0%, #1e1b4b 100%)" 
+                      : "linear-gradient(135deg, var(--bg-secondary) 0%, #064e3b 100%)",
+                    border: "1px solid var(--bg-card-border)",
+                    display: "flex",
+                    alignItems: "center",
+                    padding: "20px",
+                    position: "relative"
+                  }}
+                >
+                  <span className="mono" style={{ fontSize: 24, opacity: 0.15, position: "absolute", right: 15, bottom: 5, fontWeight: "bold" }}>
+                    {p.category.toUpperCase()}
+                  </span>
+                  <div>
+                    <span style={{ fontSize: 24 }}>{p.category === "backend" ? "⚙️" : "💻"}</span>
+                    <span className="mono" style={{ marginLeft: 10, fontSize: 13, color: "var(--text-muted)" }}>
+                      // src/components/{p.title.replace(/\s+/g, '')}.js
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              {/* Title & Description */}
+              <h3 className="bright" style={{ fontSize: 20, fontWeight: 700, marginBottom: 12, color: "var(--text-primary)" }}>
+                {p.title}
+              </h3>
+              <p className="dim" style={{ fontSize: 14.5, lineHeight: 1.7, marginBottom: 20, color: "var(--text-secondary)", flex: 1 }}>
+                {p.desc}
+              </p>
+
+              {/* Tech Stack tags */}
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 24 }}>
                 {p.tech.map(t => (
-                  <span key={t} className="mono" style={{ fontSize: 12, padding: "4px 10px", background: "#1d3461", borderRadius: 4, color: "#8892b0" }}>{t}</span>
+                  <span 
+                    key={t} 
+                    className="mono" 
+                    style={{ 
+                      fontSize: 11, 
+                      padding: "4px 10px", 
+                      background: "var(--bg-secondary)", 
+                      border: "1px solid var(--bg-card-border)",
+                      borderRadius: 4, 
+                      color: "var(--accent)" 
+                    }}
+                  >
+                    {t}
+                  </span>
                 ))}
+              </div>
+
+              {/* Links */}
+              <div style={{ display: "flex", gap: 16, borderTop: "1px solid var(--bg-card-border)", paddingTop: 16 }}>
+                {p.link && p.link !== "#" && (
+                  <a 
+                    href={p.link} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="mono accent" 
+                    style={{ fontSize: 13, display: "flex", alignItems: "center", gap: 4, fontWeight: "600" }}
+                  >
+                    🚀 Live Demo
+                  </a>
+                )}
+                {p.github && (
+                  <a 
+                    href={p.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="mono primary" 
+                    style={{ fontSize: 13, display: "flex", alignItems: "center", gap: 4, fontWeight: "600" }}
+                  >
+                    🐙 GitHub
+                  </a>
+                )}
               </div>
             </div>
           ))}
@@ -30,4 +217,5 @@ function Projects() {
     </section>
   );
 }
+
 export default Projects;

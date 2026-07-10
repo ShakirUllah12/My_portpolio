@@ -35,55 +35,83 @@ function Hero() {
     display: "flex",
     alignItems: "center",
     gap: 8,
-    padding: "8px 16px",
+    padding: "10px 20px",
     borderRadius: 8,
-    backgroundColor: "#0f172a",
-    color: "#f1f5f9",
+    backgroundColor: "var(--bg-secondary)",
+    color: "var(--text-primary)",
+    border: "1px solid var(--bg-card-border)",
     textDecoration: "none",
     fontWeight: 500,
-    transition: "all 0.3s ease",
+    fontSize: 14,
+    fontFamily: "'Fira Code', monospace",
+    transition: "all 0.25s ease",
   };
 
   const socialHoverStyle = {
-    backgroundColor: "#3b82f6",
-    color: "#fff",
-    transform: "scale(1.05)",
+    backgroundColor: "var(--primary)",
+    color: "var(--bg-primary)",
+    borderColor: "var(--primary)",
+    transform: "translateY(-2px)",
   };
 
   return (
     <section
       id="home"
-      style={{ minHeight: "100vh", display: "flex", alignItems: "center", paddingTop: 80 }}
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        paddingTop: 100,
+        paddingBottom: 60,
+      }}
     >
-      <div className="container">
-        <p className="mono primary" style={{ fontSize: 16, marginBottom: 16 }}>
+      <div className="container" style={{ width: "100%" }}>
+        <p className="mono accent" style={{ fontSize: 16, marginBottom: 16, fontWeight: 500 }}>
           Hi, my name is
         </p>
-        <h1 className="bright" style={{ fontSize: 56, fontWeight: 700, marginBottom: 8 }}>
+        
+        <h1 
+          className="bright" 
+          style={{ 
+            fontSize: "clamp(36px, 8vw, 64px)", 
+            fontWeight: 800, 
+            lineHeight: 1.1,
+            letterSpacing: "-1px",
+            marginBottom: 16 
+          }}
+        >
           Shakir Ullah<span className="primary">.</span>
         </h1>
 
         {/* Scrolling tech word + static Developer */}
-        <h2 style={{ fontSize: 40, fontWeight: 600, marginBottom: 24 }}>
-          <span style={{ color: "#ffff" }}>{currentWord}</span>{" "}
-          <span style={{ color: "#10b981" }}>Developer</span>
+        <h2 
+          style={{ 
+            fontSize: "clamp(24px, 5vw, 42px)", 
+            fontWeight: 700, 
+            marginBottom: 24,
+            color: "var(--text-primary)"
+          }}
+        >
+          <span style={{ color: "var(--primary)" }}>{currentWord || "MERN Stack"}</span>{" "}
+          <span style={{ color: "var(--accent)" }}>Developer</span>
           <span className="primary">|</span>
         </h2>
 
-        <p className="dim" style={{ maxWidth: 540, lineHeight: 1.8, marginBottom: 32 }}>
-        Hi, my name is Shakir Ullah.
-MERN Stack Developer
-
-I'm a Computer Science graduate from Peshawar, Pakistan, specializing in building modern, scalable, and responsive web applications.
-
-I work with:
-React, Node.js, Express, MongoDB, Tailwind CSS, JavaScript, TypeScript, Git & GitHub.
-
-I focus on creating fast, clean, and user-friendly digital experiences.
+        <p 
+          className="dim" 
+          style={{ 
+            maxWidth: 600, 
+            fontSize: "clamp(15px, 2.5vw, 17px)",
+            lineHeight: 1.8, 
+            marginBottom: 40,
+            color: "var(--text-secondary)"
+          }}
+        >
+          I'm a Computer Science graduate from Peshawar, Pakistan, specializing in building modern, scalable, and responsive web applications. I focus on creating fast, clean, and user-friendly digital experiences.
         </p>
 
         {/* Social Buttons */}
-        <div style={{ display: "flex", gap: 16, marginBottom: 32 }}>
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginBottom: 40 }}>
           <a
             href="https://github.com/ShakirUllah12"
             target="_blank"
@@ -105,7 +133,7 @@ I focus on creating fast, clean, and user-friendly digital experiences.
             🔗 LinkedIn
           </a>
           <a
-            href="mailto:your.email@example.com"
+            href="mailto:shakirullahaup@gmail.com"
             style={socialButtonStyle}
             onMouseEnter={(e) => Object.assign(e.target.style, socialHoverStyle)}
             onMouseLeave={(e) => Object.assign(e.target.style, socialButtonStyle)}
@@ -114,10 +142,29 @@ I focus on creating fast, clean, and user-friendly digital experiences.
           </a>
         </div>
 
-        {/* Existing buttons */}
+        {/* Primary Call to Action Buttons */}
         <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
           <a href="#projects" className="btn">view_projects()</a>
           <a href="#contact" className="btn-filled">hire_me()</a>
+          <button
+            onClick={() => alert("Resume download simulation triggered! In a production deployment, this links to Shakir's PDF resume file.")}
+            className="btn"
+            style={{ 
+              borderColor: "var(--accent)", 
+              color: "var(--accent)",
+              backgroundColor: "transparent",
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.backgroundColor = "var(--accent-glow)";
+              e.target.style.transform = "translateY(-2px)";
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.backgroundColor = "transparent";
+              e.target.style.transform = "translateY(0)";
+            }}
+          >
+            📄 download_resume()
+          </button>
         </div>
       </div>
     </section>
