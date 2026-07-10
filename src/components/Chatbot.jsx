@@ -9,32 +9,64 @@ const SUGGESTIONS = [
 
 const BOT_KNOWLEDGE = [
   {
-    keywords: ["hello", "hi", "hey", "greetings", "yo"],
-    response: "Hello there! 👋 Nice to meet you. I'm Shakir's AI Assistant. Ask me anything about his programming skills, projects, education, or availability!"
+    keywords: ["hello", "hi", "hey", "greetings", "yo", "welcome"],
+    response: "Hello there! 👋 Nice to meet you. I'm Shakir's Personal AI Assistant. Ask me anything about his qualifications, programming skills, projects, or job availability!"
   },
   {
-    keywords: ["skills", "tech", "languages", "stack", "react", "node", "mongodb", "express", "javascript", "typescript"],
-    response: "Shakir is a skilled **MERN Stack Developer**. His core skills include:\n\n• **Frontend**: React, Tailwind CSS, JavaScript (ES6+), TypeScript, HTML5/CSS3\n• **Backend**: Node.js, Express.js, REST APIs\n• **Database**: MongoDB, Mongoose\n• **Tools**: Git & GitHub, VS Code, Linux\n\nHe specializes in building clean, responsive, and high-performance web applications!"
+    keywords: ["education", "qualification", "degree", "university", "graduate", "college", "study", "studies", "bsc", "bscs"],
+    response: "Shakir is a **Computer Science graduate** from Peshawar, Pakistan. He holds a Bachelor of Science in Computer Science (BSCS), which gave him a solid foundation in software engineering principles, databases, data structures, algorithms, and web technologies."
+  },
+  {
+    keywords: ["skills", "tech", "languages", "stack", "react", "node", "mongodb", "express", "javascript", "typescript", "tailwind", "html", "css"],
+    response: "Shakir's core technical stack and skills include:\n\n• **Frontend**: React, JavaScript (ES6+), TypeScript, Tailwind CSS, HTML5/CSS3\n• **Backend**: Node.js, Express.js, RESTful APIs\n• **Database**: MongoDB, Mongoose\n• **Tools & Version Control**: Git & GitHub, VS Code, Linux, Figma\n\nHe specializes in building clean, modern, responsive, and high-performance MERN stack applications!"
   },
   {
     keywords: ["fyp", "pdf-based", "pdf", "learning assistant", "ai learning", "final year", "pdf assistant"],
-    response: "Shakir's Final Year Project is the **AI Learning Assistant (PDF-Based)**. It is a full-stack MERN application that lets users upload PDFs and interact with an AI to learn from the content, ask questions, and get summaries.\n\nCheck out the live demo here: [AI Learning Assistant](https://ai-learning-frontend-navy.vercel.app/login)!"
+    response: "Shakir's Final Year Project is the **AI Learning Assistant (PDF-Based)**.\n\n• **Description**: It allows users to upload PDF documents and engage in an interactive chat with an AI to learn from the content, ask specific questions, and generate summaries.\n• **Tech Stack**: React, Node.js, Express, MongoDB, Tailwind CSS, OpenAI API.\n• **Live Demo**: [Live Link](https://ai-learning-frontend-navy.vercel.app/login)\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12)"
   },
   {
-    keywords: ["projects", "things built", "what did you build", "portfolio projects", "e-commerce", "stripe", "chat app", "dashboard"],
-    response: "Shakir has built several impressive projects:\n\n1. **AI Learning Assistant (PDF-Based)**: Upload and learn from PDFs using AI.\n2. **E-Commerce Platform**: Complete shop with Stripe payments, JWT auth, and admin panel.\n3. **MERN E-Commerce API**: Secure REST API backend with JWT user auth.\n4. **Blog API**: Express & MongoDB backend supporting CRUD operations.\n5. **Task Management App**: Collaborative board with drag-and-drop & Socket.io.\n\nAll details are listed in the **Projects** section of this site!"
+    keywords: ["e-commerce platform", "ecommerce platform", "online store", "shop", "ecommerce platform project"],
+    response: "The **E-Commerce Platform** is a full-stack MERN application:\n\n• **Description**: Features user authentication, product management, shopping cart, admin dashboard, and secure credit card checkout payments.\n• **Tech Stack**: React, Node.js, MongoDB, Express, Stripe payments.\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12)"
   },
   {
-    keywords: ["location", "contact", "email", "address", "phone", "linkedin", "github", "hire", "job", "work", "available"],
-    response: "Shakir is based in **Peshawar, Pakistan** and is **available for hire** or freelance opportunities! \n\nYou can reach him via:\n• **Email**: shakirullahaup@gmail.com\n• **LinkedIn**: [LinkedIn Profile](https://www.linkedin.com/in/shakir-ullah-203ab4271/)\n• **GitHub**: [GitHub Profile](https://github.com/ShakirUllah12)\n\nFeel free to fill out the **Contact Form** at the bottom of the page to message him directly!"
+    keywords: ["mern e-commerce api", "ecommerce api", "shop api", "ecommerce backend"],
+    response: "The **MERN E-Commerce API** is a robust backend database system:\n\n• **Description**: A RESTful API powering commerce functions, featuring secure JWT authentication, password hashing, and database-driven order and catalog systems.\n• **Tech Stack**: Node.js, Express.js, MongoDB, JWT, Bcrypt.\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12/mern-ecommerce)"
   },
   {
-    keywords: ["education", "degree", "university", "graduate", "college", "study"],
-    response: "Shakir is a **Computer Science graduate** from Peshawar, Pakistan. He has a strong foundation in software engineering principles, databases, data structures, and web development."
+    keywords: ["blog api", "blog backend", "blog database"],
+    response: "The **Blog API** is a backend service for content managers:\n\n• **Description**: Supports full CRUD (Create, Read, Update, Delete) operations on articles, user registration, categories, and tags.\n• **Tech Stack**: Node.js, Express.js, MongoDB, Mongoose.\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12/blog-api)"
   },
   {
-    keywords: ["help", "what can you do", "ask", "question"],
-    response: "You can ask me questions like:\n• 'What is your tech stack?'\n• 'Tell me about your PDF learning project'\n• 'Where are you located?'\n• 'Are you looking for a job?'"
+    keywords: ["task management", "kanban", "collaboration tool", "socket"],
+    response: "The **Task Management App** is a real-time organizational tool:\n\n• **Description**: Drag-and-drop workspace board enabling team collaboration, instant synchronization, and status updates.\n• **Tech Stack**: React, Express, MongoDB, Socket.io.\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12)"
+  },
+  {
+    keywords: ["social media dashboard", "dashboard project", "analytics dashboard"],
+    response: "The **Social Media Dashboard** is a data visualization client:\n\n• **Description**: Modern frontend interface loaded with interactive charts displaying analytics, traffic, and user activity across multiple channels.\n• **Tech Stack**: React, Node.js, MongoDB, Chart.js.\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12)"
+  },
+  {
+    keywords: ["real-time chat app", "chat app project", "video call app", "webrtc project"],
+    response: "The **Real-Time Chat App** is a communication client:\n\n• **Description**: Instant message transfer, support for file sharing, group conversations, and WebRTC-based video calls.\n• **Tech Stack**: React, Express, MongoDB, WebRTC.\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12)"
+  },
+  {
+    keywords: ["projects", "things built", "what did you build", "portfolio projects", "built", "list projects"],
+    response: "Shakir has built several full-stack and backend projects:\n\n1. **AI Learning Assistant (PDF-Based)** (Final Year Project)\n2. **E-Commerce Platform**\n3. **MERN E-Commerce API** (Backend)\n4. **Blog API** (Backend)\n5. **Task Management App**\n6. **Social Media Dashboard**\n7. **Real-Time Chat App**\n\nAsk me about any specific project (e.g., 'Tell me about the Blog API') or scroll to the **Projects** section of the page to filter and review them!"
+  },
+  {
+    keywords: ["experience", "background", "history", "career", "work experience", "where did you work", "about me", "bio", "profile"],
+    response: "Shakir is a **MERN Stack Developer** and Computer Science graduate. He has hands-on experience designing full-stack web applications, coding secure RESTful APIs, integrating MongoDB databases, and formatting custom frontend dashboards.\n\nHe has a strong passion for software engineering and is focused on building products that provide clean, pixel-perfect, and high-performance user experiences."
+  },
+  {
+    keywords: ["contact", "email", "address", "phone", "linkedin", "github", "how to reach", "socials", "location", "where do you live", "peshawar", "pakistan"],
+    response: "You can find and contact Shakir through the following channels:\n\n• **Email**: shakirullahaup@gmail.com\n• **Location/Address**: Peshawar, Pakistan\n• **GitHub**: [GitHub Profile](https://github.com/ShakirUllah12)\n• **LinkedIn**: [LinkedIn Profile](https://www.linkedin.com/in/shakir-ullah-203ab4271/)\n\nAlternatively, you can write and submit a message directly using the **Contact Form** at the bottom of this portfolio page!"
+  },
+  {
+    keywords: ["hire", "job", "work", "available", "freelance", "opportunity", "position", "seeking", "recruit", "interview"],
+    response: "Yes! Shakir is **actively seeking new opportunities**, including full-time developer positions, remote roles, and freelance projects. He is ready to bring his MERN stack skills and engineering background to your team.\n\nPlease reach out to him at **shakirullahaup@gmail.com** or send a message using the Contact Form on this site!"
+  },
+  {
+    keywords: ["help", "what can you do", "ask", "question", "features"],
+    response: "As Shakir's Personal Assistant, I can answer questions about:\n\n• His **education** & credentials\n• His **tech stack** & skills\n• Details of his **projects** (e.g. FYP PDF Assistant, E-Commerce, Blog API)\n• His **contact details** & location\n• His **availability** for jobs/hiring\n\nWhat would you like to know?"
   }
 ];
 
@@ -44,7 +76,7 @@ function Chatbot() {
     {
       id: 1,
       sender: "bot",
-      text: "Hi there! 👋 I'm Shakir's AI Assistant. How can I help you today? Ask me about my skills, projects, or hireability!",
+      text: "Hi there! 👋 I'm Shakir's Personal AI Assistant. I can answer questions about Shakir's background, technical skills, projects, and work availability. How can I help you today?",
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     }
   ]);
@@ -106,15 +138,37 @@ function Chatbot() {
   const getBotResponse = (userText) => {
     const query = userText.toLowerCase().trim();
     
-    // Find matching topic
+    // 1. Guardrail for general coding/programming instructions, math, essays, etc.
+    const isCodingReq = /\b(code|function|class|method|write a|program|algorithm|script|compile|loop|syntax|how to|explain how|recursion|tutorial|math|equation|calculate|translate|solve)\b/i.test(query);
+    const isAboutShakir = /\b(shakir|you|he|his|him|dev|portfolio|resume|cv|skills|tech|stack|project|fyp|pdf|ecommerce|api|blog|chat|dashboard|task|education|college|university|location|peshawar|pakistan|contact|email|linkedin|github|hire|job|work|avail)\b/i.test(query);
+    
+    // Check if user is asking generic technical/programming help and NOT asking about Shakir specifically
+    if (isCodingReq && !isAboutShakir) {
+      return "I'm sorry, but as Shakir's Personal Assistant, I am designed to answer questions *only* about Shakir Ullah, his qualifications, technical skills, projects, and work availability.\n\nI cannot write code, solve general technical problems, or write content unrelated to Shakir. Please ask me about Shakir's stack or Final Year Project!";
+    }
+
+    // 2. Tech stack general explanation redirect
+    const matchTechExplanation = query.match(/\b(what is|explain|how does)\s+(react|node|mongodb|express|javascript|typescript|tailwind|git|figma|webrtc|socket|stripe)\b/i);
+    if (matchTechExplanation && !query.includes("you") && !query.includes("shakir") && !query.includes("project") && !query.includes("use")) {
+      const techName = matchTechExplanation[2];
+      return `**${techName}** is one of the core technologies in Shakir's stack! He uses it to build modern, interactive interfaces and scalable backend architectures.\n\nWhile I can't write code or give general tutorials, I can explain how Shakir uses it in his projects. For example, he used React and Tailwind CSS in his **AI Learning Assistant (PDF-Based)**. Would you like to hear about that?`;
+    }
+
+    // 3. General knowledge questions check (not about Shakir)
+    const isQuestionWord = /^(what|how|why|who|where|when|can you|is it)\b/i.test(query);
+    if (isQuestionWord && !isAboutShakir) {
+      return "I'm sorry, but as Shakir's Personal Assistant, I can only answer questions related directly to Shakir Ullah, his background, qualifications, skills, and portfolio.\n\nFeel free to ask me questions like: 'What is your tech stack?' or 'Tell me about your PDF learning project'!";
+    }
+
+    // 4. Find matching topic from knowledge base
     for (const knowledge of BOT_KNOWLEDGE) {
       if (knowledge.keywords.some(keyword => query.includes(keyword))) {
         return knowledge.response;
       }
     }
     
-    // Default fallback response
-    return "That's a great question! While I don't have a direct answer for that, Shakir definitely does. You can contact him directly at **shakirullahaup@gmail.com** or send a message using the Contact Form at the bottom of this page!";
+    // 5. Default fallback response (relevant to Shakir)
+    return "That's a great question about Shakir! While I don't have that specific detail in my knowledge base, you can contact Shakir directly at **shakirullahaup@gmail.com** or send a message using the Contact Form at the bottom of this page to ask him.";
   };
 
   const handleSendMessage = (textToSend) => {
