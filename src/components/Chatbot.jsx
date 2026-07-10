@@ -138,37 +138,23 @@ function Chatbot() {
   const getBotResponse = (userText) => {
     const query = userText.toLowerCase().trim();
     
-    // 1. Guardrail for general coding/programming instructions, math, essays, etc.
-    const isCodingReq = /\b(code|function|class|method|write a|program|algorithm|script|compile|loop|syntax|how to|explain how|recursion|tutorial|math|equation|calculate|translate|solve)\b/i.test(query);
-    const isAboutShakir = /\b(shakir|you|he|his|him|dev|portfolio|resume|cv|skills|tech|stack|project|fyp|pdf|ecommerce|api|blog|chat|dashboard|task|education|college|university|location|peshawar|pakistan|contact|email|linkedin|github|hire|job|work|avail)\b/i.test(query);
-    
-    // Check if user is asking generic technical/programming help and NOT asking about Shakir specifically
-    if (isCodingReq && !isAboutShakir) {
-      return "I'm sorry, but as Shakir's Personal Assistant, I am designed to answer questions *only* about Shakir Ullah, his qualifications, technical skills, projects, and work availability.\n\nI cannot write code, solve general technical problems, or write content unrelated to Shakir. Please ask me about Shakir's stack or Final Year Project!";
-    }
-
-    // 2. Tech stack general explanation redirect
-    const matchTechExplanation = query.match(/\b(what is|explain|how does)\s+(react|node|mongodb|express|javascript|typescript|tailwind|git|figma|webrtc|socket|stripe)\b/i);
-    if (matchTechExplanation && !query.includes("you") && !query.includes("shakir") && !query.includes("project") && !query.includes("use")) {
-      const techName = matchTechExplanation[2];
-      return `**${techName}** is one of the core technologies in Shakir's stack! He uses it to build modern, interactive interfaces and scalable backend architectures.\n\nWhile I can't write code or give general tutorials, I can explain how Shakir uses it in his projects. For example, he used React and Tailwind CSS in his **AI Learning Assistant (PDF-Based)**. Would you like to hear about that?`;
-    }
-
-    // 3. General knowledge questions check (not about Shakir)
-    const isQuestionWord = /^(what|how|why|who|where|when|can you|is it)\b/i.test(query);
-    if (isQuestionWord && !isAboutShakir) {
-      return "I'm sorry, but as Shakir's Personal Assistant, I can only answer questions related directly to Shakir Ullah, his background, qualifications, skills, and portfolio.\n\nFeel free to ask me questions like: 'What is your tech stack?' or 'Tell me about your PDF learning project'!";
-    }
-
-    // 4. Find matching topic from knowledge base
+    // 1. Try to find a matching topic from our knowledge base first
     for (const knowledge of BOT_KNOWLEDGE) {
       if (knowledge.keywords.some(keyword => query.includes(keyword))) {
         return knowledge.response;
       }
     }
     
-    // 5. Default fallback response (relevant to Shakir)
-    return "That's a great question about Shakir! While I don't have that specific detail in my knowledge base, you can contact Shakir directly at **shakirullahaup@gmail.com** or send a message using the Contact Form at the bottom of this page to ask him.";
+    // 2. If no direct topic matches, check if the question is related to Shakir at all
+    const isAboutShakir = /\b(shakir|shakirullah|you|your|he|his|him|dev|developer|portfolio|resume|cv|skills|tech|stack|project|projects|fyp|pdf|ecommerce|api|blog|chat|dashboard|task|education|college|university|location|peshawar|pakistan|contact|email|linkedin|github|hire|job|work|avail|available|background|experience|bio|about|profile|history|career|study|studies|degree|qualification|qualifications)\b/i.test(query);
+
+    if (isAboutShakir) {
+      // Fallback for queries about Shakir that we don't have direct info for
+      return "That's a great question about Shakir! While I don't have that specific detail in my knowledge base, you can contact Shakir directly at **shakirullahaup@gmail.com** or send a message using the Contact Form at the bottom of this page to ask him.";
+    } else {
+      // Politely decline general programming or general knowledge queries
+      return "I'm sorry, but as Shakir's Personal Assistant, I am designed to answer questions *only* about Shakir Ullah, his qualifications, technical skills, projects, and work availability. \n\nI cannot write code, solve general technical problems, or assist with generic tasks. Please ask me about Shakir's background, skills, or Final Year Project!";
+    }
   };
 
   const handleSendMessage = (textToSend) => {
