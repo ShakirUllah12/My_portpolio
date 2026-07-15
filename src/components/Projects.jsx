@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 
+const FALLBACK_IMAGE = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80";
+
 const projects = [
   { 
     title: "AI Learning Assistant (PDF-Based)", 
@@ -16,7 +18,8 @@ const projects = [
     tech: ["React", "Node.js", "MongoDB", "Stripe"],
     category: "fullstack",
     link: "#",
-    github: "https://github.com/ShakirUllah12"
+    github: "https://github.com/ShakirUllah12",
+    image: "https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=800&q=80"
   },
   { 
     title: "MERN E-Commerce API", 
@@ -24,7 +27,8 @@ const projects = [
     tech: ["Node.js", "Express.js", "MongoDB", "JWT"],
     category: "backend",
     link: "#",
-    github: "https://github.com/ShakirUllah12/mern-ecommerce"
+    github: "https://github.com/ShakirUllah12/mern-ecommerce",
+    image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=800&q=80"
   },
   { 
     title: "Blog API", 
@@ -32,7 +36,8 @@ const projects = [
     tech: ["Node.js", "Express.js", "MongoDB", "Mongoose"],
     category: "backend",
     link: "#",
-    github: "https://github.com/ShakirUllah12/blog-api"
+    github: "https://github.com/ShakirUllah12/blog-api",
+    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=800&q=80"
   },
   { 
     title: "Task Management App", 
@@ -40,7 +45,8 @@ const projects = [
     tech: ["React", "Express", "MongoDB", "Socket.io"],
     category: "fullstack",
     link: "#",
-    github: "https://github.com/ShakirUllah12"
+    github: "https://github.com/ShakirUllah12",
+    image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?auto=format&fit=crop&w=800&q=80"
   },
   { 
     title: "Social Media Dashboard", 
@@ -48,7 +54,8 @@ const projects = [
     tech: ["React", "Node.js", "MongoDB", "Chart.js"],
     category: "frontend",
     link: "#",
-    github: "https://github.com/ShakirUllah12"
+    github: "https://github.com/ShakirUllah12",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80"
   },
   { 
     title: "Real-Time Chat App", 
@@ -56,7 +63,8 @@ const projects = [
     tech: ["React", "Express", "MongoDB", "WebRTC"],
     category: "fullstack",
     link: "#",
-    github: "https://github.com/ShakirUllah12"
+    github: "https://github.com/ShakirUllah12",
+    image: "https://images.unsplash.com/photo-1611746872915-64382b5c76da?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
@@ -111,51 +119,26 @@ function Projects() {
           {filteredProjects.map(p => (
             <div key={p.title} className="card" style={{ display: "flex", flexDirection: "column", height: "100%" }}>
               {/* Project Preview */}
-              {p.image ? (
-                <div 
-                  style={{ 
-                    height: 200, 
-                    overflow: "hidden", 
-                    borderRadius: 8, 
-                    marginBottom: 20, 
-                    border: "1px solid var(--bg-card-border)",
-                    backgroundColor: "#000"
+              <div 
+                style={{ 
+                  height: 200, 
+                  overflow: "hidden", 
+                  borderRadius: 8, 
+                  marginBottom: 20, 
+                  border: "1px solid var(--bg-card-border)",
+                  backgroundColor: "var(--bg-secondary)"
+                }}
+              >
+                <img 
+                  src={p.image || FALLBACK_IMAGE} 
+                  alt={p.title} 
+                  onError={(e) => {
+                    e.target.onerror = null; // Prevent infinite loop if fallback image also fails
+                    e.target.src = FALLBACK_IMAGE;
                   }}
-                >
-                  <img 
-                    src={p.image} 
-                    alt={p.title} 
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }} 
-                  />
-                </div>
-              ) : (
-                /* Sleek default mockup representation with colorful gradient */
-                <div 
-                  style={{ 
-                    height: 120, 
-                    borderRadius: 8, 
-                    marginBottom: 20, 
-                    background: p.category === "backend" 
-                      ? "linear-gradient(135deg, var(--bg-secondary) 0%, #1e1b4b 100%)" 
-                      : "linear-gradient(135deg, var(--bg-secondary) 0%, #064e3b 100%)",
-                    border: "1px solid var(--bg-card-border)",
-                    display: "flex",
-                    alignItems: "center",
-                    padding: "20px",
-                    position: "relative"
-                  }}
-                >
-                  <span className="mono" style={{ fontSize: 24, opacity: 0.15, position: "absolute", right: 15, bottom: 5, fontWeight: "bold" }}>
-                    {p.category.toUpperCase()}
-                  </span>
-                  <div>
-                    <span style={{ fontSize: 24 }}>{p.category === "backend" ? "⚙️" : "💻"}</span>
-                    <span className="mono" style={{ marginLeft: 10, fontSize: 13, color: "var(--text-muted)" }}>
-                      // src/components/{p.title.replace(/\s+/g, '')}.js
-                    </span>
-                  </div>
-                </div>
-              )}
+                  style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} 
+                />
+              </div>
 
               {/* Title & Description */}
               <h3 className="bright" style={{ fontSize: 20, fontWeight: 700, marginBottom: 12, color: "var(--text-primary)" }}>

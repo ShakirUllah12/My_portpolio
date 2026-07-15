@@ -1,36 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 function Hero() {
-  const words = ["React", "MongoDB", "Node.js", "Express", "Frontend", "JavaScript"];
-  const [currentWord, setCurrentWord] = useState("");
-  const [index, setIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-
-  useEffect(() => {
-    const typingSpeed = isDeleting ? 50 : 150;
-    const pauseTime = 1000;
-    let timeout;
-
-    if (!isDeleting && currentWord === words[index]) {
-      timeout = setTimeout(() => setIsDeleting(true), pauseTime);
-    } else if (isDeleting && currentWord === "") {
-      setIsDeleting(false);
-      setIndex((prev) => (prev + 1) % words.length);
-      timeout = setTimeout(() => {}, 500);
-    } else {
-      timeout = setTimeout(() => {
-        const fullWord = words[index];
-        setCurrentWord(
-          isDeleting
-            ? fullWord.substring(0, currentWord.length - 1)
-            : fullWord.substring(0, currentWord.length + 1)
-        );
-      }, typingSpeed);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [currentWord, isDeleting, index, words]);
-
   const socialButtonStyle = {
     display: "flex",
     alignItems: "center",
@@ -83,18 +53,17 @@ function Hero() {
           Shakir Ullah<span className="primary">.</span>
         </h1>
 
-        {/* Scrolling tech word + static Developer */}
+        {/* Static Professional Subtitle */}
         <h2 
           style={{ 
-            fontSize: "clamp(24px, 5vw, 42px)", 
-            fontWeight: 700, 
+            fontSize: "clamp(18px, 3.5vw, 28px)", 
+            fontWeight: 500, 
+            lineHeight: 1.4,
             marginBottom: 24,
-            color: "var(--text-primary)"
+            color: "var(--text-secondary)"
           }}
         >
-          <span style={{ color: "var(--primary)" }}>{currentWord || "MERN Stack"}</span>{" "}
-          <span style={{ color: "var(--accent)" }}>Developer</span>
-          <span className="primary">|</span>
+          Web and Mobile App Developer <span className="primary">|</span> MERN Stack Developer
         </h2>
 
         <p 

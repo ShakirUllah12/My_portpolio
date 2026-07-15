@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 
 const SUGGESTIONS = [
   "What is your tech stack?",
@@ -70,6 +71,158 @@ const BOT_KNOWLEDGE = [
   }
 ];
 
+const SYSTEM_PROMPT = `You are a helpful, friendly, and professional AI Assistant representing Shakir Ullah.
+Your purpose is to answer questions about Shakir Ullah, his background, qualifications, skills, projects, and career availability.
+You are also fully capable of answering general programming, code development, or technical questions to showcase his expertise.
+
+Shakir Ullah's Profile:
+- Name: Shakir Ullah
+- Role: Web and Mobile App Developer | MERN Stack Developer
+- Location: Peshawar, Pakistan
+- Education: Bachelor of Science in Computer Science (BSCS) graduate. Solid foundation in software engineering, databases, algorithms, data structures, and web development.
+- Core Technical Skills:
+  * Frontend: React, JavaScript (ES6+), TypeScript, Tailwind CSS, HTML5/CSS3
+  * Backend: Node.js, Express.js, RESTful APIs
+  * Database: MongoDB, Mongoose
+  * Tools & Version Control: Git & GitHub, VS Code, Linux, Figma
+- Career Availability: Actively seeking new opportunities (full-time developer positions, remote roles, freelance projects).
+- Contact details:
+  * Email: shakirullahaup@gmail.com
+  * GitHub: https://github.com/ShakirUllah12
+  * LinkedIn: https://www.linkedin.com/in/shakir-ullah-203ab4271
+
+Shakir Ullah's Projects:
+1. AI Learning Assistant (PDF-Based) (Final Year Project)
+   - Description: Upload PDF documents and interact with an AI to learn from the content, generate summaries, and ask questions.
+   - Tech Stack: React, Node.js, Express, MongoDB, Tailwind CSS, OpenAI API
+   - Live Demo: https://ai-learning-frontend-navy.vercel.app/login
+   - GitHub: https://github.com/ShakirUllah12
+2. E-Commerce Platform
+   - Description: Full-stack MERN e-commerce app with Stripe payments, JWT auth, and admin dashboard.
+   - Tech Stack: React, Node.js, MongoDB, Express, Stripe payments
+   - GitHub: https://github.com/ShakirUllah12
+3. MERN E-Commerce API
+   - Description: A robust backend RESTful API containing secure JWT user authentication, product management, and order checkout flows.
+   - Tech Stack: Node.js, Express.js, MongoDB, JWT
+   - GitHub: https://github.com/ShakirUllah12/mern-ecommerce
+4. Blog API
+   - Description: RESTful API built with Express supporting complete CRUD operations, category filters, and user registration for dynamic blogs.
+   - Tech Stack: Node.js, Express.js, MongoDB, Mongoose
+   - GitHub: https://github.com/ShakirUllah12/blog-api
+5. Task Management App
+   - Description: Collaborative project management tool with drag-and-drop and real-time updates.
+   - Tech Stack: React, Express, MongoDB, Socket.io
+   - GitHub: https://github.com/ShakirUllah12
+6. Social Media Dashboard
+   - Description: Analytics dashboard with data visualization and multi-platform integration.
+   - Tech Stack: React, Node.js, MongoDB, Chart.js
+   - GitHub: https://github.com/ShakirUllah12
+7. Real-Time Chat App
+   - Description: Messaging app with file sharing, group chats, and WebRTC-based video calling.
+   - Tech Stack: React, Express, MongoDB, WebRTC
+   - GitHub: https://github.com/ShakirUllah12
+
+Guidelines:
+1. If a user asks about Shakir, represent him accurately using the profile info above.
+2. If a user asks a programming-related question (e.g., how to code something, programming conceptual explanations), answer it clearly, accurately, and politely to show technical proficiency.
+3. Be friendly, clean, and professional. Format lists or code blocks nicely using markdown.
+4. Keep replies relatively concise so they fit well in a chat widget.
+`;
+
+const getOfflineResponse = (userText) => {
+  const query = userText.toLowerCase().trim();
+  
+  // 1. Try to find a matching topic from our knowledge base first
+  for (const knowledge of BOT_KNOWLEDGE) {
+    if (knowledge.keywords.some(keyword => query.includes(keyword))) {
+      return knowledge.response;
+    }
+  }
+  
+  // 2. If no direct topic matches, check if the question is related to Shakir at all
+  const isAboutShakir = /\b(shakir|shakirullah|you|your|he|his|him|dev|developer|portfolio|resume|cv|skills|tech|stack|project|projects|fyp|pdf|ecommerce|api|blog|chat|dashboard|task|education|college|university|location|peshawar|pakistan|contact|email|linkedin|github|hire|job|work|avail|available|background|experience|bio|about|profile|history|career|study|studies|degree|qualification|qualifications)\b/i.test(query);
+
+  if (isAboutShakir) {
+    // Fallback for queries about Shakir that we don't have direct info for
+    return "That's a great question about Shakir! While I don't have that specific detail in my offline knowledge base, you can contact Shakir directly at **shakirullahaup@gmail.com** or send a message using the Contact Form at the bottom of this page to ask him.";
+  } else {
+    // Politely decline general programming or general knowledge queries when offline
+    return "I'm currently running in offline fallback mode and can only answer basic questions about Shakir Ullah, his qualifications, technical skills, projects, and work availability.\n\nFor programming questions or dynamic assistance, please ensure the API key environment variables (VITE_GEMINI_API_KEY or VITE_OPENAI_API_KEY) are configured.";
+  }
+};
+
+const callLLM = async (userText, chatHistory) => {
+  const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  const openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY;
+
+  if (geminiApiKey) {
+    try {
+      const contents = [
+        ...chatHistory.map(msg => ({
+          role: msg.sender === "user" ? "user" : "model",
+          parts: [{ text: msg.text }]
+        })),
+        {
+          role: "user",
+          parts: [{ text: userText }]
+        }
+      ];
+
+      const response = await axios.post(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${geminiApiKey}`,
+        {
+          contents,
+          systemInstruction: {
+            parts: [{ text: SYSTEM_PROMPT }]
+          }
+        }
+      );
+
+      if (response.data?.candidates?.[0]?.content?.parts?.[0]?.text) {
+        return response.data.candidates[0].content.parts[0].text;
+      }
+    } catch (error) {
+      console.error("Gemini API call failed, trying fallback:", error);
+    }
+  }
+
+  if (openaiApiKey) {
+    try {
+      const messages = [
+        { role: "system", content: SYSTEM_PROMPT },
+        ...chatHistory.map(msg => ({
+          role: msg.sender === "user" ? "user" : "assistant",
+          content: msg.text
+        })),
+        { role: "user", content: userText }
+      ];
+
+      const response = await axios.post(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          model: "gpt-4o-mini",
+          messages
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${openaiApiKey}`
+          }
+        }
+      );
+
+      if (response.data?.choices?.[0]?.message?.content) {
+        return response.data.choices[0].message.content;
+      }
+    } catch (error) {
+      console.error("OpenAI API call failed, trying fallback:", error);
+    }
+  }
+
+  // Fallback to offline rule-based responder if no keys or API failure
+  return getOfflineResponse(userText);
+};
+
 function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
@@ -94,96 +247,108 @@ function Chatbot() {
   }, [messages, isTyping]);
 
   const parseMessageText = (text) => {
-    // Basic formatting for **bold** text and [label](url) links
-    const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
-    const parts = [];
-    let lastIndex = 0;
-    let match;
+    if (typeof text !== "string") return text;
 
-    // Parse [label](url) links
-    while ((match = linkRegex.exec(text)) !== null) {
-      const offset = match.index;
-      if (offset > lastIndex) {
-        parts.push(text.substring(lastIndex, offset));
+    const lines = text.split("\n");
+    return lines.map((line, lineIdx) => {
+      if (line.trim().startsWith("```")) {
+        return <hr key={lineIdx} style={{ borderColor: "var(--bg-card-border)", margin: "8px 0" }} />;
       }
-      const label = match[1];
-      const url = match[2];
-      parts.push(
-        <a
-          key={url + offset}
-          href={url}
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            color: "var(--accent)",
-            textDecoration: "underline",
-            fontWeight: "600",
-            wordBreak: "break-all"
-          }}
-        >
-          {label}
-        </a>
+
+      if (line.trim() === "") {
+        return <div key={lineIdx} style={{ height: 8 }} />;
+      }
+
+      const isListItem = line.trim().startsWith("•") || line.trim().startsWith("-") || line.trim().startsWith("*");
+      let content = isListItem ? line.trim().substring(1).trim() : line;
+
+      const parts = [];
+      const regex = /(\*\*.*?\*\*|\[.*?\]\(.*?\))/g;
+      const tokens = content.split(regex);
+
+      tokens.forEach((token, idx) => {
+        if (token.startsWith("**") && token.endsWith("**")) {
+          parts.push(<strong key={idx} style={{ color: "var(--text-primary)" }}>{token.slice(2, -2)}</strong>);
+        } else if (token.startsWith("[") && token.includes("](")) {
+          const linkMatch = token.match(/\[(.*?)\]\((.*?)\)/);
+          if (linkMatch) {
+            parts.push(
+              <a
+                key={idx}
+                href={linkMatch[2]}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  color: "var(--accent)",
+                  textDecoration: "underline",
+                  fontWeight: "600",
+                  wordBreak: "break-all"
+                }}
+              >
+                {linkMatch[1]}
+              </a>
+            );
+          } else {
+            parts.push(token);
+          }
+        } else {
+          parts.push(token);
+        }
+      });
+
+      return (
+        <div key={lineIdx} style={{ display: "flex", gap: 6, marginBottom: 2, alignItems: "flex-start" }}>
+          {isListItem && <span style={{ color: "var(--primary)", userSelect: "none" }}>•</span>}
+          <span>{parts}</span>
+        </div>
       );
-      lastIndex = linkRegex.lastIndex;
-    }
-
-    if (lastIndex < text.length) {
-      parts.push(text.substring(lastIndex));
-    }
-
-    // Process bold text on the resulting array/strings
-    return parts.length > 0 ? parts : text;
+    });
   };
 
-  const getBotResponse = (userText) => {
-    const query = userText.toLowerCase().trim();
-    
-    // 1. Try to find a matching topic from our knowledge base first
-    for (const knowledge of BOT_KNOWLEDGE) {
-      if (knowledge.keywords.some(keyword => query.includes(keyword))) {
-        return knowledge.response;
-      }
-    }
-    
-    // 2. If no direct topic matches, check if the question is related to Shakir at all
-    const isAboutShakir = /\b(shakir|shakirullah|you|your|he|his|him|dev|developer|portfolio|resume|cv|skills|tech|stack|project|projects|fyp|pdf|ecommerce|api|blog|chat|dashboard|task|education|college|university|location|peshawar|pakistan|contact|email|linkedin|github|hire|job|work|avail|available|background|experience|bio|about|profile|history|career|study|studies|degree|qualification|qualifications)\b/i.test(query);
-
-    if (isAboutShakir) {
-      // Fallback for queries about Shakir that we don't have direct info for
-      return "That's a great question about Shakir! While I don't have that specific detail in my knowledge base, you can contact Shakir directly at **shakirullahaup@gmail.com** or send a message using the Contact Form at the bottom of this page to ask him.";
-    } else {
-      // Politely decline general programming or general knowledge queries
-      return "I'm sorry, but as Shakir's Personal Assistant, I am designed to answer questions *only* about Shakir Ullah, his qualifications, technical skills, projects, and work availability. \n\nI cannot write code, solve general technical problems, or assist with generic tasks. Please ask me about Shakir's background, skills, or Final Year Project!";
-    }
-  };
-
-  const handleSendMessage = (textToSend) => {
+  const handleSendMessage = async (textToSend) => {
     if (!textToSend.trim()) return;
 
-    // Add user message
     const userMsg = {
       id: Date.now(),
       sender: "user",
       text: textToSend,
       time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
     };
-    setMessages(prev => [...prev, userMsg]);
+    
+    const newMessages = [...messages, userMsg];
+    setMessages(newMessages);
     setInput("");
-    
-    // Start typing simulation
     setIsTyping(true);
-    
-    setTimeout(() => {
-      const responseText = getBotResponse(textToSend);
+
+    try {
+      const apiHistory = messages
+        .filter(msg => msg.id !== 1) // omit welcome message from conversational history
+        .map(msg => ({
+          sender: msg.sender,
+          text: msg.text
+        }));
+
+      const responseText = await callLLM(textToSend, apiHistory);
+      
       const botMsg = {
         id: Date.now() + 1,
         sender: "bot",
         text: responseText,
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
-      setIsTyping(false);
       setMessages(prev => [...prev, botMsg]);
-    }, 1000); // 1 second delay for realism
+    } catch (error) {
+      console.error("Chat message processing error:", error);
+      const botMsg = {
+        id: Date.now() + 1,
+        sender: "bot",
+        text: "I'm sorry, I encountered an error while processing your response. Please try again or contact Shakir directly.",
+        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+      };
+      setMessages(prev => [...prev, botMsg]);
+    } finally {
+      setIsTyping(false);
+    }
   };
 
   const handleFormSubmit = (e) => {
