@@ -14,11 +14,11 @@ const BOT_KNOWLEDGE = [
     response: "Hello there! 👋 Nice to meet you. I'm Shakir's Personal AI Assistant. Ask me anything about his qualifications, programming skills, projects, or job availability!"
   },
   {
-    keywords: ["education", "qualification", "degree", "university", "graduate", "college", "study", "studies", "bsc", "bscs"],
+    keywords: ["education", "qualification", "degree", "university", "graduate", "college", "study", "studies", "bsc", "bscs", "academic", "academics", "where did you study"],
     response: "Shakir is a **Computer Science graduate** from Peshawar, Pakistan. He holds a Bachelor of Science in Computer Science (BSCS), which gave him a solid foundation in software engineering principles, databases, data structures, algorithms, and web technologies."
   },
   {
-    keywords: ["skills", "tech", "languages", "stack", "react", "node", "mongodb", "express", "javascript", "typescript", "tailwind", "html", "css"],
+    keywords: ["skills", "tech", "languages", "stack", "react", "node", "mongodb", "express", "javascript", "typescript", "tailwind", "html", "css", "what do you do", "expertise", "technologies"],
     response: "Shakir's core technical stack and skills include:\n\n• **Frontend**: React, JavaScript (ES6+), TypeScript, Tailwind CSS, HTML5/CSS3\n• **Backend**: Node.js, Express.js, RESTful APIs\n• **Database**: MongoDB, Mongoose\n• **Tools & Version Control**: Git & GitHub, VS Code, Linux, Figma\n\nHe specializes in building clean, modern, responsive, and high-performance MERN stack applications!"
   },
   {
@@ -50,11 +50,11 @@ const BOT_KNOWLEDGE = [
     response: "The **Real-Time Chat App** is a communication client:\n\n• **Description**: Instant message transfer, support for file sharing, group conversations, and WebRTC-based video calls.\n• **Tech Stack**: React, Express, MongoDB, WebRTC.\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12)"
   },
   {
-    keywords: ["projects", "things built", "what did you build", "portfolio projects", "built", "list projects"],
+    keywords: ["projects", "things built", "what did you build", "portfolio projects", "built", "list projects", "project list", "show projects"],
     response: "Shakir has built several full-stack and backend projects:\n\n1. **AI Learning Assistant (PDF-Based)** (Final Year Project)\n2. **E-Commerce Platform**\n3. **MERN E-Commerce API** (Backend)\n4. **Blog API** (Backend)\n5. **Task Management App**\n6. **Social Media Dashboard**\n7. **Real-Time Chat App**\n\nAsk me about any specific project (e.g., 'Tell me about the Blog API') or scroll to the **Projects** section of the page to filter and review them!"
   },
   {
-    keywords: ["experience", "background", "history", "career", "work experience", "where did you work", "about me", "bio", "profile"],
+    keywords: ["experience", "background", "history", "career", "work experience", "where did you work", "about me", "bio", "profile", "tell me about yourself", "tell me about shakir", "about shakir", "who is shakir", "yourself", "about you", "who are you", "introduce yourself"],
     response: "Shakir is a **MERN Stack Developer** and Computer Science graduate. He has hands-on experience designing full-stack web applications, coding secure RESTful APIs, integrating MongoDB databases, and formatting custom frontend dashboards.\n\nHe has a strong passion for software engineering and is focused on building products that provide clean, pixel-perfect, and high-performance user experiences."
   },
   {
