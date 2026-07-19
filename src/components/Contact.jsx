@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import axios from "axios";
 
 function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({ name: "", email: "", message: "" });
   const [touched, setTouched] = useState({ name: false, email: false, message: false });
-  const [sent, setSent] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const validate = (name, value) => {
     let error = "";
@@ -40,7 +43,7 @@ function Contact() {
     setErrors(prev => ({ ...prev, [name]: validate(name, value) }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     // Validate all fields
@@ -54,12 +57,49 @@ function Contact() {
     setTouched({ name: true, email: true, message: true });
 
     if (!newErrors.name && !newErrors.email && !newErrors.message) {
-      setSent(true);
-      setForm({ name: "", email: "", message: "" });
-      setTouched({ name: false, email: false, message: false });
-      setTimeout(() => setSent(false), 4000);
+      setIsSubmitting(true);
+      setSubmitError("");
+      setSubmitSuccess(false);
+
+      const formId = import.meta.env.VITE_FORMSPREE_FORM_ID;
+      
+      if (!formId || formId === "YOUR_FORMSPREE_FORM_ID_HERE") {
+        console.warn("Formspree Form ID is not configured. Simulating success...");
+        setTimeout(() => {
+          setSubmitSuccess(true);
+          setForm({ name: "", email: "", message: "" });
+          setTouched({ name: false, email: false, message: false });
+          setIsSubmitting(false);
+          setTimeout(() => setSubmitSuccess(false), 5000);
+        }, 1000);
+        return;
+      }
+
+      try {
+        const response = await axios.post(`https://formspree.io/f/${formId}`, {
+          name: form.name,
+          email: form.email,
+          message: form.message
+        });
+
+        if (response.status === 200 || response.data?.ok) {
+          setSubmitSuccess(true);
+          setForm({ name: "", email: "", message: "" });
+          setTouched({ name: false, email: false, message: false });
+          setTimeout(() => setSubmitSuccess(false), 5000);
+        } else {
+          throw new Error("Formspree delivery was not successful");
+        }
+      } catch (err) {
+        console.error("Form submission error:", err);
+        const errMsg = err.response?.data?.error || err.message || "Failed to deliver submission. Please try again later.";
+        setSubmitError(errMsg);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
+
 
   return (
     <section id="contact" className="section" style={{ backgroundColor: "var(--bg-secondary)", transition: "background-color 0.3s ease" }}>
@@ -138,12 +178,18 @@ function Contact() {
               <button 
                 type="submit" 
                 className="btn-filled" 
-                style={{ alignSelf: "flex-start", minHeight: "48px" }}
+                style={{ 
+                  alignSelf: "flex-start", 
+                  minHeight: "48px",
+                  opacity: isSubmitting ? 0.7 : 1,
+                  cursor: isSubmitting ? "not-allowed" : "pointer"
+                }}
+                disabled={isSubmitting}
               >
-                send_message()
+                {isSubmitting ? "Sending..." : "send_message()"}
               </button>
 
-              {sent && (
+              {submitSuccess && (
                 <div 
                   className="mono" 
                   style={{ 
@@ -157,6 +203,23 @@ function Contact() {
                   }}
                 >
                   ✓ Success! Your message was sent. Shakir will get back to you shortly.
+                </div>
+              )}
+
+              {submitError && (
+                <div 
+                  className="mono" 
+                  style={{ 
+                    marginTop: 16, 
+                    padding: "12px 16px", 
+                    borderRadius: "8px", 
+                    backgroundColor: "rgba(239, 68, 68, 0.1)", 
+                    border: "1.5px solid #ef4444", 
+                    color: "#ef4444",
+                    fontSize: 13 
+                  }}
+                >
+                  ✕ Error: {submitError}
                 </div>
               )}
             </form>

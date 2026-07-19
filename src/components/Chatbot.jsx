@@ -155,7 +155,17 @@ const callLLM = async (userText, chatHistory) => {
   const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY;
   const openaiApiKey = import.meta.env.VITE_OPENAI_API_KEY;
 
-  if (geminiApiKey) {
+  const isGeminiValid = geminiApiKey && geminiApiKey !== "YOUR_GEMINI_API_KEY_HERE" && !geminiApiKey.startsWith("YOUR_");
+  const isOpenAIValid = openaiApiKey && openaiApiKey !== "YOUR_OPENAI_API_KEY_HERE" && !openaiApiKey.startsWith("YOUR_");
+
+  if (!isGeminiValid && !isOpenAIValid) {
+    // If no valid API keys are configured, fallback to offline rules-based responder
+    return getOfflineResponse(userText);
+  }
+
+  let errorToThrow = null;
+
+  if (isGeminiValid) {
     try {
       const contents = [
         ...chatHistory.map(msg => ({
@@ -175,18 +185,24 @@ const callLLM = async (userText, chatHistory) => {
           systemInstruction: {
             parts: [{ text: SYSTEM_PROMPT }]
           }
+        },
+        {
+          timeout: 12000 // 12 seconds timeout
         }
       );
 
       if (response.data?.candidates?.[0]?.content?.parts?.[0]?.text) {
         return response.data.candidates[0].content.parts[0].text;
+      } else {
+        throw new Error("Invalid response structure from Gemini API");
       }
     } catch (error) {
-      console.error("Gemini API call failed, trying fallback:", error);
+      console.error("Gemini API call failed:", error);
+      errorToThrow = error;
     }
   }
 
-  if (openaiApiKey) {
+  if (isOpenAIValid) {
     try {
       const messages = [
         { role: "system", content: SYSTEM_PROMPT },
@@ -207,20 +223,24 @@ const callLLM = async (userText, chatHistory) => {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${openaiApiKey}`
-          }
+          },
+          timeout: 12000 // 12 seconds timeout
         }
       );
 
       if (response.data?.choices?.[0]?.message?.content) {
         return response.data.choices[0].message.content;
+      } else {
+        throw new Error("Invalid response structure from OpenAI API");
       }
     } catch (error) {
-      console.error("OpenAI API call failed, trying fallback:", error);
+      console.error("OpenAI API call failed:", error);
+      errorToThrow = error;
     }
   }
 
-  // Fallback to offline rule-based responder if no keys or API failure
-  return getOfflineResponse(userText);
+  // Propagate the API failure so that the UI can catch it and display a clear error message
+  throw errorToThrow || new Error("AI service is currently unavailable");
 };
 
 function Chatbot() {
@@ -342,7 +362,7 @@ function Chatbot() {
       const botMsg = {
         id: Date.now() + 1,
         sender: "bot",
-        text: "I'm sorry, I encountered an error while processing your response. Please try again or contact Shakir directly.",
+        text: "⚠️ Something went wrong, please try again. If the issue persists, feel free to contact Shakir directly.",
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setMessages(prev => [...prev, botMsg]);
@@ -529,14 +549,18 @@ function Chatbot() {
                     backgroundColor: "var(--bg-card)",
                     border: "1px solid var(--bg-card-border)",
                     color: "var(--text-muted)",
-                    fontSize: "14px",
+                    fontSize: "13px",
                     display: "flex",
-                    gap: 4
+                    alignItems: "center",
+                    gap: 8
                   }}
                 >
-                  <span className="typing-dot" style={{ animation: "typingBounce 1.4s infinite 0s" }}>•</span>
-                  <span className="typing-dot" style={{ animation: "typingBounce 1.4s infinite 0.2s" }}>•</span>
-                  <span className="typing-dot" style={{ animation: "typingBounce 1.4s infinite 0.4s" }}>•</span>
+                  <span style={{ fontSize: "11px", fontFamily: "'Fira Code', monospace" }}>thinking</span>
+                  <div style={{ display: "flex", gap: 3 }}>
+                    <span className="typing-dot" style={{ animation: "typingBounce 1.4s infinite 0s", fontWeight: "bold" }}>•</span>
+                    <span className="typing-dot" style={{ animation: "typingBounce 1.4s infinite 0.2s", fontWeight: "bold" }}>•</span>
+                    <span className="typing-dot" style={{ animation: "typingBounce 1.4s infinite 0.4s", fontWeight: "bold" }}>•</span>
+                  </div>
                 </div>
               </div>
             )}

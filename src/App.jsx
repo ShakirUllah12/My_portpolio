@@ -7,6 +7,7 @@ import Projects from "./components/Projects.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
 import Chatbot from "./components/Chatbot.jsx";
+import WhatsAppButton from "./components/WhatsAppButton.jsx";
 
 function App() {
   useEffect(() => {
@@ -39,8 +40,10 @@ function App() {
       <div className="reveal"><Contact /></div>
       <Footer />
       <Chatbot />
+      <WhatsAppButton />
     </div>
   );
+
 }
 
 export default App;
