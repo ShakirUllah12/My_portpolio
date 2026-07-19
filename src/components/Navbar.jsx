@@ -114,13 +114,10 @@ function Navbar() {
 
           {/* Resume Download Action */}
           <a
-            href="#contact"
+            href="/resume.pdf"
+            download="Shakir_Ullah_Resume.pdf"
             className="btn"
             style={{ padding: "8px 16px", fontSize: 13 }}
-            onClick={(e) => {
-              // Direct download simulation or focus contact
-              alert("Resume download simulation triggered! In a production deployment, this links to Shakir's PDF resume file.");
-            }}
           >
             Resume
           </a>
@@ -233,13 +230,11 @@ function Navbar() {
 
             {/* Resume button in Mobile menu */}
             <a
-              href="#contact"
+              href="/resume.pdf"
+              download="Shakir_Ullah_Resume.pdf"
               className="btn-filled"
               style={{ width: "100%", textAlign: "center" }}
-              onClick={() => {
-                setOpen(false);
-                alert("Resume download simulation triggered! In a production deployment, this links to Shakir's PDF resume file.");
-              }}
+              onClick={() => setOpen(false)}
             >
               📄 Download Resume
             </a>

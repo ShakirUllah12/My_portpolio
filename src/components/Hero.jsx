@@ -115,13 +115,15 @@ function Hero() {
         <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
           <a href="#projects" className="btn">view_projects()</a>
           <a href="#contact" className="btn-filled">hire_me()</a>
-          <button
-            onClick={() => alert("Resume download simulation triggered! In a production deployment, this links to Shakir's PDF resume file.")}
+          <a
+            href="/resume.pdf"
+            download="Shakir_Ullah_Resume.pdf"
             className="btn"
             style={{ 
               borderColor: "var(--accent)", 
               color: "var(--accent)",
               backgroundColor: "transparent",
+              textDecoration: "none",
             }}
             onMouseEnter={(e) => {
               e.target.style.backgroundColor = "var(--accent-glow)";
@@ -133,7 +135,7 @@ function Hero() {
             }}
           >
             📄 download_resume()
-          </button>
+          </a>
         </div>
       </div>
     </section>
