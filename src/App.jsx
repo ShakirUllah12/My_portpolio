@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
 import About from "./components/About.jsx";
 import Skills from "./components/Skills.jsx";
+import Experience from "./components/Experience.jsx";
 import Projects from "./components/Projects.jsx";
 import Contact from "./components/Contact.jsx";
 import Footer from "./components/Footer.jsx";
@@ -36,6 +37,7 @@ function App() {
       <Hero />
       <div className="reveal"><About /></div>
       <div className="reveal"><Skills /></div>
+      <div className="reveal"><Experience /></div>
       <div className="reveal"><Projects /></div>
       <div className="reveal"><Contact /></div>
       <Footer />

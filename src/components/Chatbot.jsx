@@ -54,8 +54,8 @@ const BOT_KNOWLEDGE = [
     response: "Shakir has built several full-stack and backend projects:\n\n1. **AI Learning Assistant (PDF-Based)** (Final Year Project)\n2. **E-Commerce Platform**\n3. **MERN E-Commerce API** (Backend)\n4. **Blog API** (Backend)\n5. **Task Management App**\n6. **Social Media Dashboard**\n7. **Real-Time Chat App**\n\nAsk me about any specific project (e.g., 'Tell me about the Blog API') or scroll to the **Projects** section of the page to filter and review them!"
   },
   {
-    keywords: ["experience", "background", "history", "career", "work experience", "where did you work", "about me", "bio", "profile", "tell me about yourself", "tell me about shakir", "about shakir", "who is shakir", "yourself", "about you", "who are you", "introduce yourself"],
-    response: "Shakir is a **MERN Stack Developer** and Computer Science graduate. He has hands-on experience designing full-stack web applications, coding secure RESTful APIs, integrating MongoDB databases, and formatting custom frontend dashboards.\n\nHe has a strong passion for software engineering and is focused on building products that provide clean, pixel-perfect, and high-performance user experiences."
+    keywords: ["experience", "background", "history", "career", "work experience", "where did you work", "about me", "bio", "profile", "tell me about yourself", "tell me about shakir", "about shakir", "who is shakir", "yourself", "about you", "who are you", "introduce yourself", "sky marketing", "marketing"],
+    response: "Shakir is currently working as a **MERN Stack Developer** at **Sky Marketing** in Blue Area, Islamabad, Pakistan since August 2026. In this role, he builds and maintains scalable web applications using MongoDB, Express.js, React.js, and Node.js, collaborates with cross-functional teams, and contributes to both frontend UI development and backend API integration.\n\nHe is also a Computer Science graduate with hands-on experience designing full-stack web applications and coding secure RESTful APIs."
   },
   {
     keywords: ["contact", "email", "address", "phone", "linkedin", "github", "how to reach", "socials", "location", "where do you live", "peshawar", "pakistan"],
@@ -85,6 +85,15 @@ Shakir Ullah's Profile:
   * Backend: Node.js, Express.js, RESTful APIs
   * Database: MongoDB, Mongoose
   * Tools & Version Control: Git & GitHub, VS Code, Linux, Figma
+- Professional Experience:
+  * Company: Sky Marketing (Real estate marketing company based in Blue Area, Islamabad, Pakistan)
+  * Role: MERN Stack Developer (Full-time)
+  * Status: August 2026 - Present (Currently working)
+  * Key Responsibilities:
+    - Selected as a MERN Stack Developer at Sky Marketing.
+    - Building and maintaining scalable web applications using MongoDB, Express.js, React.js, and Node.js.
+    - Collaborating with cross-functional teams to deliver responsive, high-performance features.
+    - Contributing to both frontend UI development and backend API integration.
 - Career Availability: Actively seeking new opportunities (full-time developer positions, remote roles, freelance projects).
 - Contact details:
   * Email: shakirullahaup@gmail.com
