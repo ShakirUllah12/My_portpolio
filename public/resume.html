@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shakir Ullah | CV</title>
+  <!-- Google Fonts matching the portfolio -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;         /* Indigo 600 */
+      --accent: #0d9488;          /* Teal 600 */
+      --text-primary: #0f172a;    /* Slate 900 */
+      --text-secondary: #334155;  /* Slate 700 */
+      --text-muted: #64748b;      /* Slate 500 */
+      --border-color: #e2e8f0;    /* Slate 200 */
+      --bg-secondary: #f8fafc;    /* Slate 50 */
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      background-color: #f1f5f9;
+      padding: 40px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .resume-container {
+      background-color: #ffffff;
+      width: 210mm; /* A4 Width */
+      min-height: 297mm; /* A4 Height */
+      padding: 30px 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 8px;
+    }
+
+    /* Print instruction banner */
+    .print-banner {
+      width: 210mm;
+      background: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      margin: 0 auto 20px auto;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.15);
+      font-size: 14px;
+    }
+
+    .print-banner button {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid white;
+      color: white;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .print-banner button:hover {
+      background: white;
+      color: var(--primary);
+    }
+
+    /* Header styling */
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+    }
+
+    .subtitle {
+      font-family: 'Fira Code', monospace;
+      font-size: 16px;
+      color: var(--primary);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .contact-info {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .links a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .links a:hover {
+      color: var(--primary);
+      text-decoration: underline;
+    }
+
+    /* Section styling */
+    section {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 14px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-primary);
+      border-bottom: 1.5px solid var(--border-color);
+      padding-bottom: 4px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -1.5px;
+      width: 40px;
+      height: 1.5px;
+      background-color: var(--primary);
+    }
+
+    p.summary-text {
+      font-size: 13px;
+      text-align: justify;
+      line-height: 1.6;
+    }
+
+    /* Skill badges container */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+    }
+
+    .skill-item {
+      font-size: 13px;
+      display: flex;
+      align-items: baseline;
+    }
+
+    .skill-category {
+      font-weight: 600;
+      color: var(--text-primary);
+      min-width: 130px;
+      display: inline-block;
+    }
+
+    /* List items and entries */
+    .entry {
+      margin-bottom: 14px;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 3px;
+    }
+
+    .entry-subtitle {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .entry-title-text {
+      color: var(--text-primary);
+    }
+
+    .entry-company {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    ul.bullets {
+      padding-left: 16px;
+      font-size: 12.5px;
+      color: var(--text-secondary);
+    }
+
+    ul.bullets li {
+      margin-bottom: 4px;
+      line-height: 1.5;
+    }
+
+    /* Print adjustments */
+    @media print {
+      body {
+        background-color: white;
+        padding: 0;
+      }
+      .resume-container {
+        box-shadow: none;
+        padding: 0;
+        width: 100%;
+        min-height: auto;
+      }
+      .print-banner {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+    <!-- Interactive Banner telling user how to print -->
+    <div class="print-banner">
+      <span>📄 <strong>Print Mode Ready:</strong> Click print to save directly as A4 PDF.</span>
+      <button onclick="window.print()">Print / Save as PDF</button>
+    </div>
+
+    <div class="resume-container">
+      <header>
+        <h1>Shakir Ullah</h1>
+        <div class="subtitle">MERN Stack Developer</div>
+        <div class="contact-info">
+          Islamabad, Pakistan | 0349-5906229 | shakirullahaup@gmail.com
+        </div>
+        <div class="links">
+          <a href="https://www.linkedin.com/in/shakir-ullah-203ab4271" target="_blank">🔗 LinkedIn</a>
+          <a href="https://github.com/ShakirUllah12" target="_blank">🐙 GitHub</a>
+          <a href="https://shakir-portfolio.vercel.app" target="_blank">🌐 Portfolio</a>
+        </div>
+      </header>
+
+      <section id="summary">
+        <h2 class="section-title">Professional Summary</h2>
+        <p class="summary-text">
+          Computer Science graduate (BS, 2026) and MERN Stack Developer with hands-on experience building full-stack web applications using React.js, Node.js, Express.js, and MongoDB. Skilled in developing responsive interfaces, RESTful APIs, and AI-integrated systems using the Google Gemini API. Completed a frontend development internship and an AI-powered final year project. Seeking a full-time MERN Stack Developer role to contribute technical skills in a professional environment.
+        </p>
+      </section>
+
+      <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title-text">BS Computer Science</span>
+            <span>2022 – 2026</span>
+          </div>
+          <div class="entry-subtitle">
+            <span>University of Agriculture, Peshawar</span>
+            <span>Peshawar, Pakistan</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-item">
+            <span class="skill-category">● Languages:</span>
+            <span>JavaScript, TypeScript, HTML5, CSS3</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-category">● Frontend:</span>
+            <span>React.js, Bootstrap, Tailwind CSS</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-category">● Backend:</span>
+            <span>Node.js, Express.js, REST APIs</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-category">● Database:</span>
+            <span>MongoDB</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-category">● AI Integration:</span>
+            <span>Google Gemini API</span>
+          </div>
+          <div class="skill-item">
+            <span class="skill-category">● Tools & Platforms:</span>
+            <span>Git, GitHub, Vercel, Postman</span>
+          </div>
+          <div class="skill-item" style="grid-column: span 2;">
+            <span class="skill-category">● Core Stack:</span>
+            <span>MERN (MongoDB, Express.js, React.js, Node.js) — Full Stack Development</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        
+        <!-- Sky Marketing -->
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title-text">MERN Stack Developer <span class="entry-company">@ Sky Marketing</span></span>
+            <span>August 2026 – Present</span>
+          </div>
+          <div class="entry-subtitle">
+            <span>Full-time | Blue Area, Islamabad, Pakistan</span>
+            <span>Current</span>
+          </div>
+          <ul class="bullets">
+            <li>Selected as a MERN Stack Developer at Sky Marketing, a real estate marketing company based in Blue Area, Islamabad.</li>
+            <li>Building and maintaining scalable web applications using MongoDB, Express.js, React.js, and Node.js.</li>
+            <li>Collaborating with cross-functional teams to deliver responsive, high-performance features.</li>
+            <li>Contributing to both frontend UI development and backend API integration.</li>
+          </ul>
+        </div>
+
+        <!-- Internship -->
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title-text">Frontend Development Intern</span>
+            <span>June 2026 – July 2026</span>
+          </div>
+          <div class="entry-subtitle">
+            <span>Remote / Online | 2 Months</span>
+          </div>
+          <ul class="bullets">
+            <li>Built responsive UI components using React, HTML, CSS, and JavaScript on live client projects.</li>
+            <li>Collaborated with a remote team to implement design requirements and improve website interfaces.</li>
+            <li>Gained practical experience with Git/GitHub and real-world development workflows.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title-text">AI Learning Assistant — Final Year Project</span>
+            <a href="https://ai-learning-frontend-navy.vercel.app" target="_blank" style="color: var(--accent); font-size: 11px; text-decoration: none; font-family: 'Fira Code', monospace;">[Live Demo]</a>
+          </div>
+          <div class="entry-subtitle">
+            <span>MERN Stack, React, Node.js, Express.js, MongoDB, Google Gemini API</span>
+          </div>
+          <ul class="bullets">
+            <li>Built a full-stack AI-powered study platform integrating the Google Gemini API to help students learn faster.</li>
+            <li>Implemented PDF-to-notes conversion, auto-generated MCQs, exam-ready summaries, and an interactive flashcard generator.</li>
+            <li>Designed a responsive React interface with backend APIs built in Node.js and Express.</li>
+          </ul>
+        </div>
+
+        <div class="entry">
+          <div class="entry-header">
+            <span class="entry-title-text">E-Commerce Web Application</span>
+          </div>
+          <div class="entry-subtitle">
+            <span>MERN Stack, React, Node.js, Express.js, MongoDB</span>
+          </div>
+          <ul class="bullets">
+            <li>Developed a full-featured e-commerce platform for browsing, searching, and purchasing products online.</li>
+            <li>Built REST APIs for product management, user accounts, and order handling with MongoDB.</li>
+            <li>Implemented product listing, cart, and checkout with a clean, responsive, mobile-friendly UI.</li>
+          </ul>
+        </div>
+
+        <div class="entry" style="margin-bottom: 0;">
+          <div class="entry-header">
+            <span class="entry-title-text">Social Media Dashboard</span>
+          </div>
+          <div class="entry-subtitle">
+            <span>React.js | Deployed on Vercel</span>
+          </div>
+          <ul class="bullets">
+            <li>Built a fully responsive social media dashboard with dynamic UI components and data visualization, deployed on Vercel.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="certifications" style="margin-bottom: 0;">
+        <h2 class="section-title">Certifications</h2>
+        <ul class="bullets" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px;">
+          <li style="list-style-type: disc; margin-left: 16px;">Web Development — HTML, CSS, JavaScript, React</li>
+          <li style="list-style-type: disc; margin-left: 16px;">MERN Stack Development — MongoDB, Express.js, React.js, Node.js</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+</body>
+</html>
