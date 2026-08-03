@@ -22,6 +22,10 @@ const BOT_KNOWLEDGE = [
     response: "Shakir's core technical stack and skills include:\n\n• **Frontend**: React, JavaScript (ES6+), TypeScript, Tailwind CSS, HTML5/CSS3\n• **Backend**: Node.js, Express.js, RESTful APIs\n• **Database**: MongoDB, Mongoose\n• **Tools & Version Control**: Git & GitHub, VS Code, Linux, Figma\n\nHe specializes in building clean, modern, responsive, and high-performance MERN stack applications!"
   },
   {
+    keywords: ["mern", "mern stack", "what is mern", "mongodb express react node", "stack explanation"],
+    response: "The **MERN Stack** is a popular JavaScript-based software stack used to build full-stack web applications:\n\n• **M (MongoDB)**: A flexible NoSQL database that stores data in JSON-like documents, facilitating seamless interaction with JavaScript.\n• **E (Express.js)**: A lightweight backend framework for Node.js that simplifies handling server routes and building RESTful APIs.\n• **R (React.js)**: A powerful frontend library for building highly interactive user interfaces using reusable components.\n• **N (Node.js)**: A fast JavaScript runtime built on Chrome's V8 engine that runs JavaScript on the server side.\n\nBy masterfully combining these four components, Shakir builds clean, unified web applications with high speed, security, and scalability!"
+  },
+  {
     keywords: ["fyp", "pdf-based", "pdf", "learning assistant", "ai learning", "final year", "pdf assistant"],
     response: "Shakir's Final Year Project is the **AI Learning Assistant (PDF-Based)**.\n\n• **Description**: It allows users to upload PDF documents and engage in an interactive chat with an AI to learn from the content, ask specific questions, and generate summaries.\n• **Tech Stack**: React, Node.js, Express, MongoDB, Tailwind CSS, OpenAI API.\n• **Live Demo**: [Live Link](https://ai-learning-frontend-navy.vercel.app/login)\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12)"
   },
@@ -77,7 +81,7 @@ You are also fully capable of answering general programming, code development, o
 
 Shakir Ullah's Profile:
 - Name: Shakir Ullah
-- Role: Web and Mobile App Developer | MERN Stack Developer
+- Role: MERN Stack Developer
 - Location: Peshawar, Pakistan
 - Education: Bachelor of Science in Computer Science (BSCS) graduate. Solid foundation in software engineering, databases, algorithms, data structures, and web development.
 - Core Technical Skills:

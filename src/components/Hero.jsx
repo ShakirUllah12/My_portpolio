@@ -63,7 +63,7 @@ function Hero() {
             color: "var(--text-secondary)"
           }}
         >
-          Web and Mobile App Developer <span className="primary">|</span> MERN Stack Developer
+          MERN Stack Developer
         </h2>
 
         <p 
