@@ -1,3 +1,4 @@
+
 import React, { useEffect } from "react";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./components/Hero.jsx";
@@ -20,10 +21,11 @@ function App() {
           }
         });
       },
-      { threshold: 0.08 } // Trigger when 8% of the section is visible
+      { threshold: 0.08 }
     );
 
     const revealElements = document.querySelectorAll(".reveal");
+
     revealElements.forEach((el) => observer.observe(el));
 
     return () => {
@@ -34,18 +36,37 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Hero />
-      <div className="reveal"><About /></div>
-      <div className="reveal"><Skills /></div>
-      <div className="reveal"><Experience /></div>
-      <div className="reveal"><Projects /></div>
-      <div className="reveal"><Contact /></div>
+
+      <main>
+        <Hero />
+
+        <div className="reveal">
+          <About />
+        </div>
+
+        <div className="reveal">
+          <Skills />
+        </div>
+
+        <div className="reveal">
+          <Experience />
+        </div>
+
+        <div className="reveal">
+          <Projects />
+        </div>
+
+        <div className="reveal">
+          <Contact />
+        </div>
+      </main>
+
       <Footer />
       <Chatbot />
       <WhatsAppButton />
     </div>
   );
-
 }
 
 export default App;
+
