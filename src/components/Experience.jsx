@@ -5,16 +5,30 @@ function Experience() {
   const experiences = [
     {
       role: "MERN Stack Developer",
-      company: "Sky Marketing",
+      company: "Rising Star Digital Company",
       location: "Blue Area, Islamabad, Pakistan",
       type: "Full-time",
       duration: "August 2026 - Present",
       icon: "💼",
       bullets: [
-        "Selected as a MERN Stack Developer at Sky Marketing, a real estate marketing company based in Blue Area, Islamabad.",
+        "Selected as a MERN Stack Developer at Rising Star Digital Company, an agency based in Blue Area, Islamabad.",
         "Building and maintaining scalable web applications using MongoDB, Express.js, React.js, and Node.js.",
         "Collaborating with cross-functional teams to deliver responsive, high-performance features.",
         "Contributing to both frontend UI development and backend API integration.",
+      ],
+    },
+    {
+      role: "SEO Specialist",
+      company: "Rising Star Digital Company",
+      location: "Blue Area, Islamabad, Pakistan",
+      type: "Full-time",
+      duration: "August 2026 - Present",
+      icon: "📈",
+      bullets: [
+        "Developing and executing comprehensive on-page, off-page, and technical SEO strategies.",
+        "Performing keyword research, competitor analysis, and site audits to improve organic rankings.",
+        "Optimizing web applications for search engine crawlability, page speed, mobile-friendliness, and structured data.",
+        "Monitoring and analyzing website traffic and ranking performance using Google Analytics and Search Console.",
       ],
     },
   ];

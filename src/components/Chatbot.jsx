@@ -58,8 +58,8 @@ const BOT_KNOWLEDGE = [
     response: "Shakir has built several full-stack and backend projects:\n\n1. **AI Learning Assistant (PDF-Based)** (Final Year Project)\n2. **E-Commerce Platform**\n3. **MERN E-Commerce API** (Backend)\n4. **Blog API** (Backend)\n5. **Task Management App**\n6. **Social Media Dashboard**\n7. **Real-Time Chat App**\n\nAsk me about any specific project (e.g., 'Tell me about the Blog API') or scroll to the **Projects** section of the page to filter and review them!"
   },
   {
-    keywords: ["experience", "background", "history", "career", "work experience", "where did you work", "about me", "bio", "profile", "tell me about yourself", "tell me about shakir", "about shakir", "who is shakir", "yourself", "about you", "who are you", "introduce yourself", "sky marketing", "marketing"],
-    response: "Shakir is currently working as a **MERN Stack Developer** at **Sky Marketing** in Blue Area, Islamabad, Pakistan since August 2026. In this role, he builds and maintains scalable web applications using MongoDB, Express.js, React.js, and Node.js, collaborates with cross-functional teams, and contributes to both frontend UI development and backend API integration.\n\nHe is also a Computer Science graduate with hands-on experience designing full-stack web applications and coding secure RESTful APIs."
+    keywords: ["experience", "background", "history", "career", "work experience", "where did you work", "about me", "bio", "profile", "tell me about yourself", "tell me about shakir", "about shakir", "who is shakir", "yourself", "about you", "who are you", "introduce yourself", "rising star", "digital company", "seo", "marketing"],
+    response: "Shakir is currently working as a **MERN Stack Developer** and **SEO Specialist** at **Rising Star Digital Company** in Blue Area, Islamabad, Pakistan since August 2026. In this dual capacity, he builds and maintains scalable web applications using the MERN stack while also executing comprehensive on-page, off-page, and technical SEO strategies to boost organic search rankings. He collaborates with cross-functional teams to deliver high-performance, search-optimized web applications."
   },
   {
     keywords: ["contact", "email", "address", "phone", "linkedin", "github", "how to reach", "socials", "location", "where do you live", "peshawar", "pakistan"],
@@ -90,14 +90,15 @@ Shakir Ullah's Profile:
   * Database: MongoDB, Mongoose
   * Tools & Version Control: Git & GitHub, VS Code, Linux, Figma
 - Professional Experience:
-  * Company: Sky Marketing (Real estate marketing company based in Blue Area, Islamabad, Pakistan)
-  * Role: MERN Stack Developer (Full-time)
+  * Company: Rising Star Digital Company (Digital agency based in Blue Area, Islamabad, Pakistan)
+  * Roles: MERN Stack Developer & SEO Specialist (Full-time)
   * Status: August 2026 - Present (Currently working)
   * Key Responsibilities:
-    - Selected as a MERN Stack Developer at Sky Marketing.
+    - Selected as a MERN Stack Developer and SEO Specialist at Rising Star Digital Company.
     - Building and maintaining scalable web applications using MongoDB, Express.js, React.js, and Node.js.
+    - Implementing on-page, off-page, and technical SEO strategies to increase organic search traffic and search engine rankings.
     - Collaborating with cross-functional teams to deliver responsive, high-performance features.
-    - Contributing to both frontend UI development and backend API integration.
+    - Contributing to frontend UI development, backend API integration, and web performance optimization.
 - Career Availability: Actively seeking new opportunities (full-time developer positions, remote roles, freelance projects).
 - Contact details:
   * Email: shakirullahaup@gmail.com

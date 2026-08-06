@@ -21,12 +21,12 @@ const categories = [
     ],
   },
   {
-    title: "Tools & Others",
+    title: "SEO & Tools",
     skills: [
+      { name: "SEO (On-page / Technical)", level: 85 },
+      { name: "Search Console & GA4", level: 80 },
       { name: "Git & GitHub", level: 88 },
-      { name: "VS Code", level: 90 },
-      { name: "Figma", level: 70 },
-      { name: "Linux", level: 65 },
+      { name: "VS Code & Figma", level: 85 },
     ],
   },
 ];
