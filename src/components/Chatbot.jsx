@@ -54,8 +54,16 @@ const BOT_KNOWLEDGE = [
     response: "The **Real-Time Chat App** is a communication client:\n\n• **Description**: Instant message transfer, support for file sharing, group conversations, and WebRTC-based video calls.\n• **Tech Stack**: React, Express, MongoDB, WebRTC.\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12)"
   },
   {
+    keywords: ["fitzone", "fitzone gym", "gym project", "gym website"],
+    response: "The **FitZone Gym** is a full-stack gym website:\n\n• **Description**: Features dynamic services and trainers pages powered by a REST API, SEO optimization (meta tags, structured data, sitemap, Google Search Console integration), and a fully responsive design.\n• **Tech Stack**: React, Node.js, Express, MongoDB, Vercel, SEO.\n• **Live Demo**: [Live Link](https://fitzone-gym-42vj.vercel.app/)\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12/fitzone-gym)"
+  },
+  {
+    keywords: ["rising star website", "rising star digital website", "agency website project"],
+    response: "The **Rising Star Digital Website** is the corporate agency website for Rising Star Digital Company:\n\n• **Description**: Optimized for speed, performance, and search engines. Features a sleek, modern portfolio showcase, contact portals, services descriptions, and full mobile responsiveness.\n• **Tech Stack**: React, Tailwind CSS, Vercel, SEO.\n• **Source Code**: [GitHub](https://github.com/ShakirUllah12/rising-star-digital)"
+  },
+  {
     keywords: ["projects", "things built", "what did you build", "portfolio projects", "built", "list projects", "project list", "show projects"],
-    response: "Shakir has built several full-stack and backend projects:\n\n1. **AI Learning Assistant (PDF-Based)** (Final Year Project)\n2. **E-Commerce Platform**\n3. **MERN E-Commerce API** (Backend)\n4. **Blog API** (Backend)\n5. **Task Management App**\n6. **Social Media Dashboard**\n7. **Real-Time Chat App**\n\nAsk me about any specific project (e.g., 'Tell me about the Blog API') or scroll to the **Projects** section of the page to filter and review them!"
+    response: "Shakir has built several full-stack, frontend, and backend projects:\n\n1. **FitZone Gym** (Full-Stack MERN Gym Site with SEO)\n2. **Rising Star Digital Website** (Corporate Agency Showcase)\n3. **AI Learning Assistant (PDF-Based)** (Final Year Project)\n4. **E-Commerce Platform**\n5. **MERN E-Commerce API** (Backend)\n6. **Blog API** (Backend)\n7. **Task Management App**\n8. **Social Media Dashboard**\n9. **Real-Time Chat App**\n\nAsk me about any specific project (e.g., 'Tell me about FitZone Gym') or scroll to the **Projects** section of the page to filter and review them!"
   },
   {
     keywords: ["experience", "background", "history", "career", "work experience", "where did you work", "about me", "bio", "profile", "tell me about yourself", "tell me about shakir", "about shakir", "who is shakir", "yourself", "about you", "who are you", "introduce yourself", "rising star", "digital company", "seo", "marketing"],
@@ -106,33 +114,42 @@ Shakir Ullah's Profile:
   * LinkedIn: https://www.linkedin.com/in/shakir-ullah-203ab4271
 
 Shakir Ullah's Projects:
-1. AI Learning Assistant (PDF-Based) (Final Year Project)
+1. FitZone Gym
+   - Description: A full-stack gym website built with the MERN stack. Features dynamic services and trainers, REST API, SEO optimization, and responsive design.
+   - Tech Stack: React, Node.js, Express, MongoDB, Vercel, SEO
+   - Live Demo: https://fitzone-gym-42vj.vercel.app/
+   - GitHub: https://github.com/ShakirUllah12/fitzone-gym
+2. Rising Star Digital Website
+   - Description: The corporate agency website for Rising Star Digital Company, optimized for speed, performance, and SEO.
+   - Tech Stack: React, Tailwind CSS, Vercel, SEO
+   - GitHub: https://github.com/ShakirUllah12/rising-star-digital
+3. AI Learning Assistant (PDF-Based) (Final Year Project)
    - Description: Upload PDF documents and interact with an AI to learn from the content, generate summaries, and ask questions.
    - Tech Stack: React, Node.js, Express, MongoDB, Tailwind CSS, OpenAI API
    - Live Demo: https://ai-learning-frontend-navy.vercel.app/login
    - GitHub: https://github.com/ShakirUllah12
-2. E-Commerce Platform
+4. E-Commerce Platform
    - Description: Full-stack MERN e-commerce app with Stripe payments, JWT auth, and admin dashboard.
    - Tech Stack: React, Node.js, MongoDB, Express, Stripe payments
    - GitHub: https://github.com/ShakirUllah12
-3. MERN E-Commerce API
+5. MERN E-Commerce API
    - Description: A robust backend RESTful API containing secure JWT user authentication, product management, and order checkout flows.
    - Tech Stack: Node.js, Express.js, MongoDB, JWT
    - GitHub: https://github.com/ShakirUllah12/mern-ecommerce
-4. Blog API
+6. Blog API
    - Description: RESTful API built with Express supporting complete CRUD operations, category filters, and user registration for dynamic blogs.
    - Tech Stack: Node.js, Express.js, MongoDB, Mongoose
    - GitHub: https://github.com/ShakirUllah12/blog-api
-5. Task Management App
+7. Task Management App
    - Description: Collaborative project management tool with drag-and-drop and real-time updates.
    - Tech Stack: React, Express, MongoDB, Socket.io
    - GitHub: https://github.com/ShakirUllah12
-6. Social Media Dashboard
+8. Social Media Dashboard
    - Description: Analytics dashboard with data visualization and multi-platform integration.
    - Tech Stack: React, Node.js, MongoDB, Chart.js
    - GitHub: https://github.com/ShakirUllah12
-7. Real-Time Chat App
-   - Description: Messaging app with file sharing, group chats, and WebRTC-based video calling.
+9. Real-Time Chat App
+   - Description: Messaging app with file sharing, group chats, and video calling.
    - Tech Stack: React, Express, MongoDB, WebRTC
    - GitHub: https://github.com/ShakirUllah12
 

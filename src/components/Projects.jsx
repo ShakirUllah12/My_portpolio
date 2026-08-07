@@ -15,6 +15,15 @@ const projects = [
     image: "/fitzone_gym.jpg",
   },
   {
+    title: "Rising Star Digital Website",
+    desc: "The corporate agency website for Rising Star Digital Company, optimized for speed, performance, and SEO. Features a sleek, modern portfolio showcase, contact portals, services descriptions, and full mobile responsiveness.",
+    tech: ["React", "Tailwind CSS", "Vercel", "SEO"],
+    category: "frontend",
+    link: "#",
+    github: "https://github.com/ShakirUllah12/rising-star-digital",
+    image: "/rising_star_digital.jpg",
+  },
+  {
     title: "AI Learning Assistant (PDF-Based)",
     desc: "A Final Year Project that lets users upload PDFs and interact with an AI to learn from their content, generate summaries, and ask questions.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "OpenAI"],
