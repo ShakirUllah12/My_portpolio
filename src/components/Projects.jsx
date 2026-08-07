@@ -6,6 +6,15 @@ const FALLBACK_IMAGE =
 
 const projects = [
   {
+    title: "FitZone Gym",
+    desc: "A full-stack gym website built with the MERN stack (MongoDB, Express, React, Node.js). Features dynamic services and trainers pages powered by a REST API, SEO optimization (meta tags, structured data, sitemap, Google Search Console integration), and a fully responsive design.",
+    tech: ["React", "Node.js", "Express", "MongoDB", "Vercel", "SEO"],
+    category: "fullstack",
+    link: "https://fitzone-gym-42vj.vercel.app/",
+    github: "https://github.com/ShakirUllah12/fitzone-gym",
+    image: "/fitzone_gym.jpg",
+  },
+  {
     title: "AI Learning Assistant (PDF-Based)",
     desc: "A Final Year Project that lets users upload PDFs and interact with an AI to learn from their content, generate summaries, and ask questions.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "OpenAI"],
