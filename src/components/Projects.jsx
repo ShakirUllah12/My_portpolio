@@ -7,7 +7,7 @@ const FALLBACK_IMAGE =
 const projects = [
   {
     title: "FitZone Gym",
-    desc: "A full-stack gym website built with the MERN stack (MongoDB, Express, React, Node.js). Features dynamic services and trainers pages powered by a REST API, SEO optimization (meta tags, structured data, sitemap, Google Search Console integration), and a fully responsive design.",
+    desc: "A full-stack gym website built with the MERN stack (MongoDB, Express, React, Node.js), featuring dynamic trainer profiles and search-engine-optimized pages.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Vercel", "SEO"],
     category: "fullstack",
     link: "https://fitzone-gym-42vj.vercel.app/",
@@ -16,7 +16,7 @@ const projects = [
   },
   {
     title: "Rising Star Digital Website",
-    desc: "The corporate agency website for Rising Star Digital Company, optimized for speed, performance, and SEO. Features a sleek, modern portfolio showcase, contact portals, services descriptions, and full mobile responsiveness.",
+    desc: "A corporate agency website for Rising Star Digital Company built with React and Tailwind CSS, featuring a sleek project portfolio, interactive contact portals, and fully responsive layouts.",
     tech: ["React", "Tailwind CSS", "Vercel", "SEO"],
     category: "frontend",
     link: "#",
@@ -25,7 +25,7 @@ const projects = [
   },
   {
     title: "AI Learning Assistant (PDF-Based)",
-    desc: "A Final Year Project that lets users upload PDFs and interact with an AI to learn from their content, generate summaries, and ask questions.",
+    desc: "A PDF-based AI learning assistant built with React, Node.js, Express, MongoDB, and OpenAI, enabling users to upload documents and generate smart summaries or ask questions.",
     tech: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS", "OpenAI"],
     category: "fullstack",
     link: "https://ai-learning-frontend-navy.vercel.app/login",
@@ -34,7 +34,7 @@ const projects = [
   },
   {
     title: "E-Commerce Platform",
-    desc: "Full-stack MERN e-commerce app with Stripe payments, JWT auth, and admin dashboard.",
+    desc: "A full-stack e-commerce web application featuring Stripe payment processing, secure JWT authentication, and an administrative dashboard, built using React, Node.js, and MongoDB.",
     tech: ["React", "Node.js", "MongoDB", "Stripe"],
     category: "fullstack",
     link: "#",
@@ -44,7 +44,7 @@ const projects = [
   },
   {
     title: "MERN E-Commerce API",
-    desc: "A robust backend RESTful API containing secure JWT user authentication, product management, and order checkout flows.",
+    desc: "A robust backend RESTful API developed with Node.js, Express, and MongoDB, providing secure JWT user authentication, product catalog management, and order checkout flows.",
     tech: ["Node.js", "Express.js", "MongoDB", "JWT"],
     category: "backend",
     link: "#",
@@ -54,7 +54,7 @@ const projects = [
   },
   {
     title: "Blog API",
-    desc: "RESTful API built with Express supporting complete CRUD operations, category filters, and user registration for dynamic blogs.",
+    desc: "A RESTful backend API built using Node.js, Express, and MongoDB, supporting user registration, category filtering, and full CRUD operations for dynamic blogging systems.",
     tech: ["Node.js", "Express.js", "MongoDB", "Mongoose"],
     category: "backend",
     link: "#",
@@ -64,7 +64,7 @@ const projects = [
   },
   {
     title: "Task Management App",
-    desc: "Collaborative project management tool with drag-and-drop and real-time updates.",
+    desc: "A collaborative project and task management application built using React, Node.js, and Socket.io, featuring interactive drag-and-drop boards and real-time synchronization.",
     tech: ["React", "Express", "MongoDB", "Socket.io"],
     category: "fullstack",
     link: "#",
@@ -74,7 +74,7 @@ const projects = [
   },
   {
     title: "Social Media Dashboard",
-    desc: "Analytics dashboard with data visualization and multi-platform integration.",
+    desc: "A responsive analytics dashboard built with React and Chart.js that features dynamic data visualizations and multi-platform social media integrations.",
     tech: ["React", "Node.js", "MongoDB", "Chart.js"],
     category: "frontend",
     link: "#",
@@ -84,7 +84,7 @@ const projects = [
   },
   {
     title: "Real-Time Chat App",
-    desc: "Messaging app with file sharing, group chats, and video calling.",
+    desc: "A real-time messaging application built with React, Node.js, Express, and Socket.io, supporting group chat rooms, file sharing, and video call capabilities.",
     tech: ["React", "Express", "MongoDB", "WebRTC"],
     category: "fullstack",
     link: "#",
